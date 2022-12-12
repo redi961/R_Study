@@ -174,6 +174,7 @@ head(airquality)
 # 단계 3: melt() 함수를 이용하여 넓은 형식을 긴 형식으로 변경하기 
 air_melt <- melt(airquality, id = c("MONTH", "DAY"), na.rm = TRUE)
 head(air_melt)
+air_melt
 
 # 단계 4: acast() 함수를 이용하여 3차원으로 구조 변경하기 
 names(air_melt) <- tolower(names(air_melt))
@@ -183,3 +184,4 @@ class(acast)
 
 # 단계 5: 집합함수 적용하기 
 acast(air_melt, month ~ variable, sum, margins = TRUE)
+

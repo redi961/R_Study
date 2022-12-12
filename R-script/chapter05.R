@@ -7,18 +7,23 @@ names(chart_data) <- c("2018 1분기", "2019 1분기",
                        "2018 2분기", "2019 2분기", 
                        "2018 3분기", "2019 3분기", 
                        "2018 4분기", "2019 4분기")
+
+## 데이터가 들어있는 변수들의 속성 확인인
 str(chart_data)
+
 chart_data
 
 # 단계 2: 세로 막대 차트 그리기
-barplot(chart_data, ylim = c(0, 600),
+## ylim -> y축 값의 범위 // col -> 막대의 색상 // main -> 차트의 제목목
+barplot(chart_data, ylim = c(0, 600), 
         col = rainbow(8),
         main = "2018년도 vs 2019년도 매출현항 비교")
 
 # 실습: barplot() 함수 도움말 보기 
 help("barplot")
 
-# 실습: 막대 차트의 가로축과 세로축에 레이블 추가하기 
+# 실습: 막대 차트의 가로축과 세로축에 레이블 추가하기
+#xlab -> xlabel 
 barplot(chart_data, ylim = c(0, 600),
         ylab = "매출액(단위: 만원)",
         xlab = "년도별 분기 현황",
@@ -67,9 +72,12 @@ class(VADeaths)
 mode(VADeaths)
 
 # 단계 3: 개별 차트와 누적 차트 그리기 
-par(mfrow = c(1, 2))
+par(mfrow = c(1, 2)) ## 1행 2열 그래프 보기기
+
+# 개별 차트 그래프 생성
 barplot(VADeaths, beside = T, col = rainbow(5),
         main = "미국 버지니아주 하위계층 사망비율")
+### legend -> 범례 // 아래의 경우 x좌표19,y좌표71의 위치에 무지개색으로 5개의 범례를 생성함
 legend(19, 71, c("50-54", "55-59", "60-64", "65-69", "70-74"),
        cex = 0.8, fill = rainbow(5))
 
@@ -223,6 +231,7 @@ plot(x, y,
 
 # 실습: galton 데이터 셋을 대상으로 중복된 자료 시각화하기 
 # 단계 1: galton 데이터셋 가져오기 
+install.packages("UsingR")
 library(UsingR)
 data(galton)
 
